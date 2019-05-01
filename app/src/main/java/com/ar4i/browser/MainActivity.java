@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -26,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     //==========================================start fields========================================
-    public static final int MAX_PROGRESS_VALUE = 100;
-    public static final int MIN_PROGRESS_VALUE = 0;
+    private static final int MAX_PROGRESS_VALUE = 100;
+    private static final int MIN_PROGRESS_VALUE = 0;
     //-------------------------------------------end fields-----------------------------------------
 
 
@@ -39,9 +40,8 @@ public class MainActivity extends AppCompatActivity {
         initView();
         if (savedInstanceState != null) {
             webView.restoreState(savedInstanceState);
-        } else {
-            initWebViewSettings();
         }
+        initWebViewSettings();
     }
 
     @Override
@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         webView.saveState(outState);
+        super.onSaveInstanceState(outState);
     }
     //-------------------------------------------end extends AppCompatActivity----------------------
 
@@ -127,7 +127,14 @@ public class MainActivity extends AppCompatActivity {
         settings.setBuiltInZoomControls(true);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
-        loadUrl(getString(R.string.home_domain));
+
+        WebBackForwardList webBackForwardList = webView.copyBackForwardList();
+        if (webBackForwardList != null && webBackForwardList.getSize() > 0) {
+            loadUrl(webBackForwardList.getItemAtIndex(webBackForwardList.getSize() - 1).getUrl());
+        } else {
+            loadUrl(getString(R.string.home_domain));
+        }
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
