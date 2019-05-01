@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">browser</string>
+    <string name="menu_home">home</string>
+    <string name="menu_forward">forward</string>
+    <string name="menu_back">back</string>
+    <string name="menu_search">search url</string>
+    <string name="shema">https://</string>
+    <string name="home_domain">https://google.com</string>
+    <string name="empty"></string>
+    <string name="hint">enter url, for example google.com</string>
+</resources>

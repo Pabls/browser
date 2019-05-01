@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">browser</string>
+    <string name="menu_home">Домой</string>
+    <string name="menu_forward">Вперед</string>
+    <string name="menu_back">Назад</string>
+    <string name="menu_search">URL</string>
+    <string name="shema">https://</string>
+    <string name="home_domain">https://google.com</string>
+    <string name="empty"></string>
+    <string name="hint">введите url, например google.com</string>
+</resources>
