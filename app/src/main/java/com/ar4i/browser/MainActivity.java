@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         initWebViewSettings();
     }
 
+    //-------------------------------------------end lifecycle--------------------------------------
+
+
+    //==========================================start extends AppCompatActivity=====================
     @Override
     public void onBackPressed() {
         if (webView.canGoBack()) {
@@ -52,10 +56,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
-    //-------------------------------------------end lifecycle--------------------------------------
 
-
-    //==========================================start extends AppCompatActivity=====================
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
